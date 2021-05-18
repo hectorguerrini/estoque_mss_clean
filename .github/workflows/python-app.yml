@@ -31,7 +31,7 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: pytest
         run: |
-          pytest --cov=src test/
+          pytest --cov=src test/ > pytest-coverage.txt
       - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
@@ -39,7 +39,7 @@ jobs:
           name: codecov-umbrella # optional
           fail_ci_if_error: true # optional (default = false)
           verbose: true # optional (default = false)
-      - uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
+      - name: pytest-coverage-commentator
+        uses: coroo/pytest-coverage-commentator@v1.0.2
         with:
-          path: ".coverage"
-          min_coverage: 100
+          pytest-coverage: pytest-coverage.txt
