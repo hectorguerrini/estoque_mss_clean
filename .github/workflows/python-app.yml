@@ -13,7 +13,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      COVERAGE_TOTAL: 100
+      COVERAGE_TOTAL: 80
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.9
