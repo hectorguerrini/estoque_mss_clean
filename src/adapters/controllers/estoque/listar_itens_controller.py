@@ -9,7 +9,7 @@ class ListarItensController(BaseModel):
     def usecase_is_null(cls, v):
         return v
     
-    def handle(self) -> HttpResponse:
+    async def handle(self) -> HttpResponse:
         try:
             response = self.listarItens.listar_itens();
             return ok(response)

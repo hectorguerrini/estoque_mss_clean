@@ -1,10 +1,11 @@
 from datetime import date
 from pydantic import BaseModel, validator
 from uuid import UUID, uuid4
+from typing import Optional
 
 
 class ItemModel(BaseModel):
-    uid: UUID
+    uid: Optional[UUID]
     nome: str
     descricao: str = ''
     quantidade: int
