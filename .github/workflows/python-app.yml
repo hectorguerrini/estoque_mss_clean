@@ -12,6 +12,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      COVERAGE_TOTAL: 100
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.9
@@ -31,7 +33,7 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: pytest
         run: |
-          pytest --cov=src test/ > pytest-coverage.txt
+          pytest --cov=src test/ --cov-fail-under=${{ env.COVERAGE_TOTAL }} > pytest-coverage.txt
       - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
@@ -39,7 +41,3 @@ jobs:
           name: codecov-umbrella # optional
           fail_ci_if_error: true # optional (default = false)
           verbose: true # optional (default = false)
-      - name: pytest-coverage-commentator
-        uses: coroo/pytest-coverage-commentator@v1.0.2
-        with:
-          pytest-coverage: pytest-coverage.txt
