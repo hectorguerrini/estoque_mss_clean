@@ -39,3 +39,7 @@ jobs:
           name: codecov-umbrella # optional
           fail_ci_if_error: true # optional (default = false)
           verbose: true # optional (default = false)
+      - uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
+        with:
+          path: ".coverage"
+          min_coverage: 100
