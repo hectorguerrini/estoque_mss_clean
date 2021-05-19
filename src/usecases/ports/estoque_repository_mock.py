@@ -12,7 +12,7 @@ class EstoqueRepositoryMock(IEstoqueRepository):
     ]
 
     def __init__(self, estoque):
-        if(estoque != None):
+        if(estoque is not None):
             self.estoque = estoque
 
     def listarItens(self):

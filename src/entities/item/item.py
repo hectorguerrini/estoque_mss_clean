@@ -14,14 +14,15 @@ class ItemModel(BaseModel):
 
     @staticmethod
     def make_item_from_dict(dict):
-        return ItemModel(uid=uuid4(
-        ), nome=dict['nome'], descricao=dict['descricao'], quantidade=dict['quantidade'],marca=dict['marca'],vencimento=dict['vencimento'])
+        return ItemModel(uid=uuid4(), nome=dict['nome'], descricao=dict['descricao'],
+                         quantidade=dict['quantidade'], marca=dict['marca'], vencimento=dict['vencimento'])
 
     @validator('nome')
     def nome_is_not_empty(cls, v):
         if len(v) == 0:
             raise ValueError('Nome is empty')
         return v.title()
+
     @validator('marca')
     def marca_is_not_empty(cls, v):
         if len(v) == 0:

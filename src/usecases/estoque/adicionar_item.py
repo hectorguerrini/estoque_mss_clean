@@ -1,4 +1,3 @@
-import uuid
 from typing import Any
 from pydantic import BaseModel, validator
 from src.entities.item.item import ItemModel
