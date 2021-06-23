@@ -10,11 +10,11 @@ from src.usecases.estoque.listar_itens import ListarItens
 class Test_listar_itens():
     def test_itens(self):
         listaMock = [
-            ItemModel(uid=uuid.uuid4(), nome='Produto 1', descricao='Produto bom',
+            ItemModel(uuid=uuid.uuid4(), nome='Produto 1', descricao='Produto bom',
                       quantidade=100, marca='Butanvac', vencimento='2022-04-07'),
-            ItemModel(uid=uuid.uuid4(), nome='Produto 2', descricao='Produto media',
+            ItemModel(uuid=uuid.uuid4(), nome='Produto 2', descricao='Produto media',
                       quantidade=50, marca='Coronavac', vencimento='2022-02-07'),
-            ItemModel(uid=uuid.uuid4(), nome='Produto 3', descricao='Produto ruim',
+            ItemModel(uuid=uuid.uuid4(), nome='Produto 3', descricao='Produto ruim',
                       quantidade=20, marca='AstraFodca', vencimento='2021-12-07')
         ]
         repository = EstoqueRepositoryMock(listaMock)

@@ -11,7 +11,7 @@ def test_read_itens_estoque():
 
 
 def test_create_item_estoque():
-    item = {"nome": "Produto 1", "descricao": "Produto ok",
-            "quantidade": 50, "marca": "Butanvac", "vencimento": "2022-04-07"}
+    item = {"nome": "Produto UNITTEST", "descricao": "UNITTEST DESC",
+            "quantidade": 999, "marca": "Butanvac", "vencimento": "2022-04-07"}
     response = client.post("/estoque/item", json=item)
     assert response.status_code == 200

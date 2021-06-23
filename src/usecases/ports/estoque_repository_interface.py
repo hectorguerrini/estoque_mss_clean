@@ -5,8 +5,8 @@ from src.entities.item.item import ItemModel
 class IEstoqueRepository(ABC):
     @abstractmethod
     def listarItens(self):
-        pass
+        return
 
     @abstractmethod
     def adicionarItens(self, itemModel: ItemModel):
-        pass
+        return

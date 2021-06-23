@@ -5,16 +5,25 @@ from typing import Optional
 
 
 class ItemModel(BaseModel):
-    uid: Optional[UUID]
+    uuid: Optional[UUID]
     nome: str
     descricao: str = ''
     quantidade: int
     marca: str
     vencimento: date
 
+    def toMongo(self):
+        return {
+            "uuid": self.uuid,
+            "nome": self.nome,
+            "descricao": self.descricao,
+            "quantidade": self.quantidade,
+            "marca": self.marca,
+            "vencimento": self.vencimento.isoformat()}
+
     @staticmethod
     def make_item_from_dict(dict):
-        return ItemModel(uid=uuid4(), nome=dict['nome'], descricao=dict['descricao'],
+        return ItemModel(uuid=uuid4(), nome=dict['nome'], descricao=dict['descricao'],
                          quantidade=dict['quantidade'], marca=dict['marca'], vencimento=dict['vencimento'])
 
     @validator('nome')
